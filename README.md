@@ -66,3 +66,6 @@ URL：https://docs.google.com/spreadsheets/d/1x5Y94AL_o7bbY8i81GedBcjM3BhrEhxQv8
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ## 使用素材
+### ロゴ作成
+- hatchful<br>
+URL：https://hatchful.shopify.com/ja/

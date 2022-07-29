@@ -12,7 +12,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark">
         <div class="container">
           <div class="rogo">
           <p class="navbar-brand size-20px"></p>
@@ -54,16 +54,16 @@
               <% else %>
 
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-dark' do %>Top<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>Top<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-dark' do %>投稿一覧<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>投稿一覧<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-dark' do %>新規登録<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>新規登録<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-dark' do %>ログイン<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>ログイン<% end %>
               </li>
              <% end %>
 
@@ -77,9 +77,9 @@
     <%= yield %>
     </main>
 
-    <footer>
-     <div class="mx-auto p-3 border-top text-center">
-      <p></p>
+    <footer class="footer">
+     <div class="container">
+      <p class="text-muted text-center">hondanamanager</p>
      </div>
     </footer>
   </body>
