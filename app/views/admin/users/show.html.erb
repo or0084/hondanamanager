@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">ユーザー詳細</div>
+  <div class="row-5">
+    <table class="table-borderless text-algin-left">
+        <thead>
+          <tr>
+            <th style="width: 55%">ユーザーID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td><%= @user.is_active %></td>
+          </tr>
+        </thead>
+      </table>
+
+  </div>
+</div>

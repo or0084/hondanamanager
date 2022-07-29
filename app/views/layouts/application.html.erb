@@ -26,29 +26,29 @@
             <ul class="navbar-nav ml-auto p-3" >
              <%  if admin_signed_in? %>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>ジャンル一覧<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>ジャンル一覧<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>投稿一覧<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>投稿一覧<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>ユーザー一覧<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>ユーザー一覧<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>ログアウト<% end %>
+                <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-3' do %>ログアウト<% end %>
               </li>
              <% elsif user_signed_in? %>
              <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>Top<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>Top<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>投稿一覧<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>投稿一覧<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to "/", class: 'nav-link text-light' do %>マイページ<% end %>
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>マイページ<% end %>
               </li>
               <li class="nav-item">
-                <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>ログアウト<% end %>
+                <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-3' do %>ログアウト<% end %>
               </li>
 
               <% else %>
