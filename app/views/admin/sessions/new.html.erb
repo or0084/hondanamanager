@@ -1,7 +1,7 @@
 <div class="container m-4 mx-auto">
 <div class="row">
 <div class="col-lg-1"></div>
-<h3 class="bg-light">管理者ログイン</h3>
+<h3 class="bg-light mt-5">管理者ログイン</h3>
 </div>
 <br>
 <%= form_with model: @admin, url: admin_session_path do |f| %>
@@ -25,7 +25,7 @@
   <div class="form-group row">
     <div class="col-lg-2"></div>
     <div class="col-lg-2"></div>
-    <%= f.submit "ログイン", :class => "btn btn-primary col-lg-2" %>
+    <%= f.submit "ログイン", :class => "btn btn-primary col-lg-2 mb-5" %>
   </div>
 <% end %>
 <%= render "admin/shared/links" %>

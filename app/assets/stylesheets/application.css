@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.rogo {
+  width: 100px;
+  height: 100px;
+  background: url(rogo.png);
+  background-size: 100px;
+  position: center;
+}
