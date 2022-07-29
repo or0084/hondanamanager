@@ -11,6 +11,76 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark">
+        <div class="container">
+          <div class="rogo">
+          <p class="navbar-brand size-20px"></p>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                        aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto p-3" >
+             <%  if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>ジャンル一覧<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>投稿一覧<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>ユーザー一覧<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>ログアウト<% end %>
+              </li>
+             <% elsif user_signed_in? %>
+             <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>Top<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>投稿一覧<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-light' do %>マイページ<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>ログアウト<% end %>
+              </li>
+
+              <% else %>
+
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>Top<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>投稿一覧<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>新規登録<% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "/", class: 'nav-link text-dark mr-3' do %>ログイン<% end %>
+              </li>
+             <% end %>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
+
+    <footer class="footer">
+     <div class="container">
+      <p class="text-muted text-center">hondanamanager</p>
+     </div>
+    </footer>
   </body>
 </html>
