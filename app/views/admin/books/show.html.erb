@@ -9,11 +9,11 @@
         <thead>
           <tr>
             <th style="width: 30%">投稿日</th>
-            <td><%=  %></td>
+            <td><%= book.created_at.strftime('%Y/%m/%d' %></td>
           </tr>
           <tr>
             <th>ユーザー</th>
-            <td><%= @book.user.name %></td>
+            <td><%= @books.user.name %></td>
           </tr>
           <tr>
             <th>タイトル</th>
@@ -23,10 +23,22 @@
             <th>感想</th>
             <td><%= @book.body %></td>
           </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @book.genre.name %></td>
+          </tr>
+          <tr>
+            <th>レビュー</th>
+            <td><%= @book.star %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td><%= @book.is_active ? '本棚' : '処分済み' %></td>
+          </tr>
         </thead>
       </table>
 
-      <%= link_to "編集する", edit_admin_user_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+      <%= link_to "削除する", admin_book_path(@book.id), :class => "btn btn-danger ml-5 mt-4" %>
       </div>
 　　</div>
 　</div>
