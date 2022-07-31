@@ -1,2 +1,32 @@
-<h1>Admin::Books#show</h1>
-<p>Find me in app/views/admin/books/show.html.erb</p>
+
+  <div class="row">
+    <h3>投稿詳細</h3>
+  </div>
+  <div class="container d-flex mx-auto">
+　　<div class="col-4">image</div>
+　　<div class="col-6">
+　　  <table class="table-borderless text-algin-left w-100">
+        <thead>
+          <tr>
+            <th style="width: 30%">投稿日</th>
+            <td><%=  %></td>
+          </tr>
+          <tr>
+            <th>ユーザー</th>
+            <td><%= @book.user.name %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @book.title %></td>
+          </tr>
+          <tr>
+            <th>感想</th>
+            <td><%= @book.body %></td>
+          </tr>
+        </thead>
+      </table>
+
+      <%= link_to "編集する", edit_admin_user_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+      </div>
+　　</div>
+　</div>
