@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h3 class="bg-light mt-5 ml-5 mb-4">投稿一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table col-lg-10 ">
+    <thead>
+      <tr class="table-secondary text-algin-left">
+        <th>ユーザー名</th>
+        <th style="width: 30%">タイトル</th>
+        <th style="width: 30%">感想</th>
+        <th>レビュー</th>
+        <th>投稿日</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <td><%= book.user.name %></td>
+      <td><%= link_to "/" do %><%= book.title %><% end %></td>
+      <td><%= book.body %></td>
+      <td><%= book.star %></td>
+      <td><%= book.created_at.strftime('%Y/%m/%d')%></td>
+      <td><%= user.is_active ? '本棚' : '処分済み' %></td>
+    </tbody>
+      <% end %>
+  </table>
+  </div>
+</div>
+
+<ul class="pagination">
+<%= paginate @books %>
+</ul>
