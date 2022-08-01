@@ -1,0 +1,44 @@
+
+  <div class="row">
+    <h3>投稿詳細</h3>
+  </div>
+  <div class="container d-flex mx-auto">
+　　<div class="col-4">image</div>
+　　<div class="col-6">
+　　  <table class="table-borderless text-algin-left w-100">
+        <thead>
+          <tr>
+            <th style="width: 30%">投稿日</th>
+            <td><%= book.created_at.strftime('%Y/%m/%d' %></td>
+          </tr>
+          <tr>
+            <th>ユーザー</th>
+            <td><%= @books.user.name %></td>
+          </tr>
+          <tr>
+            <th>タイトル</th>
+            <td><%= @book.title %></td>
+          </tr>
+          <tr>
+            <th>感想</th>
+            <td><%= @book.body %></td>
+          </tr>
+          <tr>
+            <th>ジャンル</th>
+            <td><%= @book.genre.name %></td>
+          </tr>
+          <tr>
+            <th>レビュー</th>
+            <td><%= @book.star %></td>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <td><%= @book.is_active ? '本棚' : '処分済み' %></td>
+          </tr>
+        </thead>
+      </table>
+
+      <%= link_to "削除する", admin_book_path(@book.id), :class => "btn btn-danger ml-5 mt-4" %>
+      </div>
+　　</div>
+　</div>

@@ -1,10 +1,11 @@
-<div class="container">
-  <div class="row">ユーザー詳細</div>
-  <div class="row-5">
-    <table class="table-borderless text-algin-left">
+<div class="container-fluid d-flex w-100">
+
+    <div class="col-4">
+      <h4 class="col-5 bg-light mt-4 mb-4 ml-4">ユーザー詳細</h4>
+    <table class="table-borderless text-algin-left w-100 ml-5">
         <thead>
           <tr>
-            <th style="width: 55%">ユーザーID</th>
+            <th style="width: 30%">ユーザーID</th>
             <td><%= @user.id %></td>
           </tr>
           <tr>
@@ -21,7 +22,59 @@
           </tr>
         </thead>
       </table>
-      <%= link_to "編集する", edit_admin_user_path(@user.id), :class => "btn btn-success" %>
 
-  </div>
+      <%= link_to "編集する", edit_admin_user_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+      </div>
+
+
+
+
+    <div class="col-7">
+      <h2 class="col-12 mt-5 mb-4">本棚</h2>
+  <table class="table w-100">
+    <thead>
+      <tr class="table-secondary text-algin-left">
+        <th style="width: 20%">タイトル</th>
+        <th style="width: 30%">感想</th>
+        <th style="width: 20%">レビュー</th>
+        <th style="width: 20%">ジャンル</th>
+        <th style="width: 20%">投稿日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <td><%= link_to "/" do %><%= book.title %><% end %></td>
+      <td><%= link_to "/" do %><%= book.body %><% end %></td>
+      <td><%= book.star %></td>
+      <td><%= book.genre %></td>
+      <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
+    </tbody>
+      <% end %>
+  </table>
+
+  <h2 class="col-12 mt-5 mb-4">処分済み</h2>
+  <table class="table w-100">
+    <thead>
+      <tr class="table-secondary text-algin-left">
+        <th style="width: 20%">タイトル</th>
+        <th style="width: 30%">感想</th>
+        <th style="width: 20%">レビュー</th>
+        <th style="width: 20%">ジャンル</th>
+        <th style="width: 20%">投稿日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+      <td><%= link_to "/" do %><%= book.title %><% end %></td>
+      <td><%= link_to "/" do %><%= book.body %><% end %></td>
+      <td><%= book.star %></td>
+      <td><%= book.genre %></td>
+      <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
+    </tbody>
+      <% end %>
+  </table>
+    </div>
+
 </div>
