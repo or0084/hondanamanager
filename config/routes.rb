@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update, :destroy]
     resources :books, only:[:index, :show, :destroy]
+    resources :genres, only:[:index, :create, :edit, :update]
   end
 
 

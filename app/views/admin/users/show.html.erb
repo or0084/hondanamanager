@@ -47,7 +47,7 @@
       <td><%= link_to "/" do %><%= book.title %><% end %></td>
       <td><%= link_to "/" do %><%= book.body %><% end %></td>
       <td><%= book.star %></td>
-      <td><%= book.genre %></td>
+      <td><%= book.genre.name %></td>
       <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
     </tbody>
       <% end %>
@@ -70,7 +70,7 @@
       <td><%= link_to "/" do %><%= book.title %><% end %></td>
       <td><%= link_to "/" do %><%= book.body %><% end %></td>
       <td><%= book.star %></td>
-      <td><%= book.genre %></td>
+      <td><%= book.genre.name %></td>
       <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
     </tbody>
       <% end %>
