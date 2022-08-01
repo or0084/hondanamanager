@@ -14,6 +14,13 @@
  *= require_self
  */
 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .rogo {
   width: 100px;
   height: 100px;
@@ -37,4 +44,32 @@
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.top {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  background-image: url(top.jpg);
+  background-size:cover;
+  background-position: center top;
+  position: relative;
+
+}
+
+.top-text {
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  margin: auto;
+  width: 500px;
+  height: 100px;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
 }

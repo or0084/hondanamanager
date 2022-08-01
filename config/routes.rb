@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -12,6 +8,9 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+  
+  root :to => "public/homes#top"
+
 
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update, :destroy]
