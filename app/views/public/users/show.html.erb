@@ -1,36 +1,35 @@
 <div class="container-fluid d-flex w-100">
 
-    <div class="col-4">
-      <h4 class="col-5 bg-light mt-4 mb-4 ml-4"><%= @user.name%>さんの本棚</h4>
+    <div class="col-4 ml-5 mt-4">
+      <h4 class="col-7 bg-light mt-5 mb-5 ml-4 text-center"><%= @user.name%>さんの本棚</h4>
     <table class="table-borderless text-algin-left w-100 ml-5">
         <thead>
           <tr>
             <th style="width: 30%">自己紹介</th>
-            <td><%= @user. %></td>
+            <td><%= @user.introduction %></td>
           </tr>
           <tr>
-            <th>ユーザー名</th>
-            <td><%= @user.name %></td>
+            <th>本棚</th>
+            <td><%= %></td>
           </tr>
           <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <th>ステータス</th>
-            <td><%= @user.is_active ? '退会' : '有効' %></td>
+            <th>処分済み</th>
+            <td><%= %></td>
           </tr>
         </thead>
       </table>
 
-      <%= link_to "編集する", edit_admin_user_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+      <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
       </div>
 
 
 
 
-    <div class="col-7">
-      <h2 class="col-12 mt-5 mb-4">本棚</h2>
+    <div class="col-7 mt-5 mb-4">
+      <div class="row d-flex justify-content-between mb-3">
+      <h2 class="col-3 ml-3">本棚</h2>
+      <div class="col-3"><%= link_to "本棚に追加","/", :class => "btn btn-primary" %></div>
+      </div>
   <table class="table w-100">
     <thead>
       <tr class="table-secondary text-algin-left">

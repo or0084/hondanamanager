@@ -1,2 +1,30 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container mx-auto">
+  <div class="row-10 mt-5 mb-4">
+    ユーザー編集
+  </div>
+  <div class="row-10 mx-auto">
+    <table class="table-borderless text-algin-left">
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+        <thead>
+          <tr>
+            <th style="width: 15%", class: "mb-3">ユーザー名</th>
+            <td style="width: 50%"><%= f.text_field :name, :size => "31", class: "mb-3" %></td>
+          </tr>
+          <tr>
+            <th class="col-1 mb-3">メールアドレス</th>
+            <td><%= f.text_field :email, :size => "31", class: "mb-3" %></td>
+          </tr>
+          <tr>
+            <th class="col-1 mb-3">自己紹介</th>
+            <td><%= f.text_area :introduction, :size => "30", class: "mb-3" %></td>
+          </tr>
+        </thead>
+      </table>
+      <div class="row">
+        <%= f.submit "変更を保存", :class => "btn btn-success col-2 mb-5 mt-3" %>
+        <%= link_to "退会する", "/", :class => "btn btn-danger col-2 mb-5 mt-3 ml-5" %>
+      </div>
+      <% end %>
+  </div>
+
+</div>
