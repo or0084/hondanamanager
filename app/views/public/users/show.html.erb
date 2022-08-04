@@ -1,12 +1,12 @@
 <div class="container-fluid d-flex w-100">
 
     <div class="col-4 ml-5 mt-4">
-      <h4 class="col-7 bg-light mt-5 mb-5 ml-4 text-center"><%= @user.name%>さんの本棚</h4>
+      <h4 class="col-7 bg-light mt-5 mb-5 ml-5 text-center"><%= @user.name%>さんの本棚</h4>
     <table class="table-borderless text-algin-left w-100 ml-5">
         <thead>
           <tr>
             <th style="width: 30%">自己紹介</th>
-            <td><%= @user.introduction %></td>
+            <td class="pr-5"><%= @user.introduction %></td>
           </tr>
           <tr>
             <th>本棚</th>
@@ -25,7 +25,7 @@
 
 
 
-    <div class="col-7 mt-5 mb-4">
+    <div class="col-7 mt-5 mb-4 ml-4">
       <div class="row d-flex justify-content-between mb-3">
       <h2 class="col-3 ml-3">本棚</h2>
       <div class="col-3"><%= link_to "本棚に追加","/", :class => "btn btn-primary" %></div>
