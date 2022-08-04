@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get 'users/mypage/edit' => 'users#edit', as: 'edit'
     patch 'users/mypage' => 'users#update', as: 'user'
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
-    patch '/users/withdraw' => 'customers#withdraw', as: 'withdraw'
+    patch '/users/withdraw' => 'users#withdraw', as: 'withdraw'
   end
 
 
