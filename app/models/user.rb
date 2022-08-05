@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
 
 
+  def active_for_authentication?
+    super && (self.is_active == false)
+  end
+
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
      user.password = SecureRandom.urlsafe_base64
