@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+    resources :books, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+
     get 'users/mypage' => 'users#show', as: 'mypage'
     get 'users/mypage/edit' => 'users#edit', as: 'edit'
     patch 'users/mypage' => 'users#update', as: 'user'

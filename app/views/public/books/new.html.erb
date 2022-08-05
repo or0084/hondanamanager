@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 class="row bg-light mx-auto">投稿フォーム</h3>
+  <%= form_with model: @book, url: books_path do |f| %>
+  <div class="row-10">
+    <div class="col-4">画像</div>
+    <div class="col-6"><%= f.file_field :image, accept: "image/*" %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4">タイトル</div>
+    <div class="col-6"><%= f.text_field :title %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4">感想</div>
+    <div class="col-6"><%= f.text_area :body %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4">ジャンル</div>
+    <div class="col-6"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択してください--" %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4">レビュー</div>
+    <div class="col-6"></div>
+  </div>
+  <div class="row-10">
+    <%= f.submit"新規登録", :class => "btn btn-success col-lg-2" %>
+  </div>
+  <% end %>
+</div>
