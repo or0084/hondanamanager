@@ -21,11 +21,9 @@ class Public::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    
   end
 
   def update
-    
     @book = Book.find(params[:id])
     @book.update(book_params)
     redirect_to book_path(@book.id)
@@ -42,7 +40,7 @@ class Public::BooksController < ApplicationController
 
 
   def book_params
-    params.require(:book).permit(:title, :body, :genre_id, :image, :star)
+    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active)
   end
 
 end

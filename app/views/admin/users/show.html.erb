@@ -81,7 +81,19 @@
       <% @book_deleted.each do |book| %>
       <td><%= link_to admin_book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
-      <td><%= book.star %></td>
+      <td><div id="star-rate<%= book.id %>"></td>
+        <script>
+          $('#star-rate<%= book.id %>').empty();
+          $('#star-rate<%= book.id %>').raty({
+            size    : 36,
+            starOff : '<%= asset_path('star-off.png') %>',
+            starOn  : '<%= asset_path('star-on.png') %>',
+            half    : false,
+            readOnly: true,
+            score   : <%= book.star %>,
+          });
+        </script>
+        </div>
       <td><%= book.genre.name %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
     </tbody>

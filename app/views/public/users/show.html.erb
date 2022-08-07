@@ -81,7 +81,7 @@
     <tbody>
       <% @book_deleted.each do |book| %>
       <td><%= link_to "/" do %><%= book.title %><% end %></td>
-      <td><%= link_to "/" do %><%= book.body %><% end %></td>
+      <td><%= book.body %></td>
       <td>
         <div id="star-rate<%= book.id %>"></td>
         <script>
