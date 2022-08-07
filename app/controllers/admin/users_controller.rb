@@ -6,6 +6,9 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book_shelf = @books.where(is_active: 'true')
+    @book_deleted = @books.where(is_active: 'false')
+
   end
 
   def edit
