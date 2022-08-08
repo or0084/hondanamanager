@@ -55,25 +55,26 @@
 <h2 class="row bg-info mt-5 mb-5 ml-1 h-100 w-100 text-center">コメント一覧</h2>
 
 <div class="container d-flex justify-content-center mb-5">
-  <div class="col-6">
+  <div class="col-7">
     <% @book.book_comments.each do |book_comment| %>
     <div class="row">
-      <div class="col-4 mb-4">
-    <p><%= image_tag book_comment.user.get_profile_image(100,100) %></p>
-    <%= book_comment.user.name %><%= book_comment.created_at.strftime('%Y/%m/%d') %>
+      <div class="col-3 mb-5">
+    <%= image_tag book_comment.user.get_profile_image(100,100) %>
+    <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
     <% if book_comment.user == current_user %>
      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
     <% end %>
     </div>
-    <div class="col-5 border">
-    <%= book_comment.comment %>
+    <div class="col-7 mr-5 p-2 bg-light comment">
+    <h4><%= book_comment.user.name %></h4>
+    <P><%= book_comment.comment %></P>
     </div>
     </div>
     <% end %>
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <%= form_with model: [@book, @book_comment] do |f| %>
-      <%= f.text_area :comment, row: '5', placeholder: "コメントをここに" %>
+      <%= f.text_area :comment, :size => "40x5", placeholder: "コメントをここに" %><br>
       <%= f.submit "送信する" %>
       <% end %>
     </div>

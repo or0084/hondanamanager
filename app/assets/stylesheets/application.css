@@ -77,3 +77,8 @@ footer{
   color: white;
   background-color: rgba(0,0,0,0.5);
 }
+
+.comment{
+  height: 100px;
+  overflow: auto;
+}
