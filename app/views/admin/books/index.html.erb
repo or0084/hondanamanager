@@ -20,11 +20,11 @@
     <tbody>
       <% @books.each do |book| %>
       <td><%= book.user.name %></td>
-      <td><%= link_to "/" do %><%= book.title %><% end %></td>
+      <td><%= link_to admin_book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
       <td><%= book.star %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d')%></td>
-      <td><%= user.is_active ? '本棚' : '処分済み' %></td>
+      <td><%= book.user.is_active ? '本棚' : '処分済み' %></td>
     </tbody>
       <% end %>
   </table>

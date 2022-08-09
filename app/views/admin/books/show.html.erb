@@ -1,19 +1,19 @@
 
-  <div class="row">
-    <h3>投稿詳細</h3>
+  <div class="row-10 mt-5 mb-5">
+    <h2 class="col-2 mx-auto text-center bg-light">投稿詳細</h2>
   </div>
   <div class="container d-flex mx-auto">
-　　<div class="col-4">image</div>
+　　<div class="col-3"><%= image_tag @book.get_image(200,200) %></div>
 　　<div class="col-6">
 　　  <table class="table-borderless text-algin-left w-100">
         <thead>
           <tr>
             <th style="width: 30%">投稿日</th>
-            <td><%= book.created_at.strftime('%Y/%m/%d' %></td>
+            <td><%= @book.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
             <th>ユーザー</th>
-            <td><%= @books.user.name %></td>
+            <td><%= @user_book.name %></td>
           </tr>
           <tr>
             <th>タイトル</th>
@@ -29,7 +29,19 @@
           </tr>
           <tr>
             <th>レビュー</th>
-            <td><%= @book.star %></td>
+            <td><div id="star-rate<%= @book.id %>">
+        <script>
+          $('#star-rate<%= @book.id %>').empty();
+          $('#star-rate<%= @book.id %>').raty({
+            size    : 36,
+            starOff : '<%= asset_path('star-off.png') %>',
+            starOn  : '<%= asset_path('star-on.png') %>',
+            half    : false,
+            readOnly:true,
+            score   : <%= @book.star %>,
+          });
+        </script>
+      </div></td>
           </tr>
           <tr>
             <th>ステータス</th>
@@ -41,4 +53,3 @@
       <%= link_to "削除する", admin_book_path(@book.id), :class => "btn btn-danger ml-5 mt-4" %>
       </div>
 　　</div>
-　</div>

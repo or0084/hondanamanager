@@ -1,7 +1,7 @@
 <div class="container-fluid d-flex w-100">
 
     <div class="col-4">
-      <h4 class="col-5 bg-light mt-4 mb-4 ml-4">ユーザー詳細</h4>
+      <h2 class="col-7 bg-light mt-5 mb-4 ml-4 text-center">ユーザー詳細</h2>
     <table class="table-borderless text-algin-left w-100 ml-5">
         <thead>
           <tr>
@@ -36,25 +36,37 @@
       <tr class="table-secondary text-algin-left">
         <th style="width: 20%">タイトル</th>
         <th style="width: 30%">感想</th>
-        <th style="width: 20%">レビュー</th>
+        <th style="width: 30%">レビュー</th>
         <th style="width: 20%">ジャンル</th>
         <th style="width: 20%">投稿日</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @books.each do |book| %>
-      <td><%= link_to "/" do %><%= book.title %><% end %></td>
-      <td><%= link_to "/" do %><%= book.body %><% end %></td>
-      <td><%= book.star %></td>
+      <% @book_shelf.each do |book| %>
+      <td><%= link_to admin_book_path(book.id) do %><%= book.title %><% end %></td>
+      <td><%= book.body %></td>
+      <td><div id="star-rate<%= book.id %>"></td>
+        <script>
+          $('#star-rate<%= book.id %>').empty();
+          $('#star-rate<%= book.id %>').raty({
+            size    : 36,
+            starOff : '<%= asset_path('star-off.png') %>',
+            starOn  : '<%= asset_path('star-on.png') %>',
+            half    : false,
+            readOnly: true,
+            score   : <%= book.star %>,
+          });
+        </script>
+        </div>
       <td><%= book.genre.name %></td>
-      <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
+      <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
     </tbody>
       <% end %>
   </table>
 
   <h2 class="col-12 mt-5 mb-4">処分済み</h2>
-  <table class="table w-100">
+  <table class="table w-100 mb-5">
     <thead>
       <tr class="table-secondary text-algin-left">
         <th style="width: 20%">タイトル</th>
@@ -66,12 +78,24 @@
     </thead>
 
     <tbody>
-      <% @books.each do |book| %>
-      <td><%= link_to "/" do %><%= book.title %><% end %></td>
-      <td><%= link_to "/" do %><%= book.body %><% end %></td>
-      <td><%= book.star %></td>
+      <% @book_deleted.each do |book| %>
+      <td><%= link_to admin_book_path(book.id) do %><%= book.title %><% end %></td>
+      <td><%= book.body %></td>
+      <td><div id="star-rate<%= book.id %>"></td>
+        <script>
+          $('#star-rate<%= book.id %>').empty();
+          $('#star-rate<%= book.id %>').raty({
+            size    : 36,
+            starOff : '<%= asset_path('star-off.png') %>',
+            starOn  : '<%= asset_path('star-on.png') %>',
+            half    : false,
+            readOnly: true,
+            score   : <%= book.star %>,
+          });
+        </script>
+        </div>
       <td><%= book.genre.name %></td>
-      <tb><%= book.created_at.strftime('%Y/%m/%d') %></tb>
+      <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
     </tbody>
       <% end %>
   </table>
