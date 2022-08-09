@@ -1,26 +1,44 @@
-<h2>Log in</h2>
+<div class="container m-4 mx-auto">
+<div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<h3 class="bg-light mb-4">ログイン</h3>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<br>
+<%= form_with model: @user, url: user_session_path do |f| %>
+  <div class="form-group row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2 col-form-label">
+    <%= f.label :email, "メールアドレス" %>
     </div>
-  <% end %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "col-lg-5", :placeholder => "sample@example.com" %>
+  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="form-group row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2 col-form-label">
+    <%= f.label :password, "パスワード" %>
+    </div>
+    <%= f.password_field :password, autocomplete: "current-password", :class => "col-lg-5" %>
+  </div>
+  <br>
+
+  <div class="form-group row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2"></div>
+    <%= f.submit "ログイン", :class => "btn btn-primary col-lg-2 mb-3" %>
   </div>
 <% end %>
 
-<%= render "publics/shared/links" %>
+<div class="row">
+
+  <h3 class="bg-light">ユーザー登録がお済みでない方</h3>
+</div>
+<div class="row">
+  <div class="col-2"></div>
+  <%= link_to new_user_registration_path do %>こちら<% end %>から新規登録を行なってください。
+</div>
+
+<!--%= render "public/shared/links" %>-->
+
+</div>

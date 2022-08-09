@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+  <h3 class="col-3 bg-light text-center mt-5 mb-5 mx-auto">投稿フォーム</h3>
+  </div>
+  <%= form_with model: @book, url: books_path do |f| %>
+  <div class="row-10">
+    <div class="col-4 mx-auto">画像</div>
+    <div class="col-4 mx-auto mb-3"><%= f.file_field :image, accept: "image/*" %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4 mx-auto">タイトル</div>
+    <div class="col-4 mx-auto mb-3"><%= f.text_field :title, :size => "37" %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4 mx-auto">感想</div>
+    <div class="col-4 mx-auto mb-3"><%= f.text_area :body, :size => "36x7" %></div>
+  </div>
+  <div class="row-10">
+    <div class="col-4 mx-auto">ジャンル</div>
+    <div class="col-4 mx-auto mb-4"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択してください--" %></div>
+  </div>
+    <div class="row-10">
+      <div class="col-4 mx-auto pb-3 pr-5">レビュー</div>
+      <div class="col-4 ml-4 pb-4 mx-auto" id="star">
+      <%= f.label :star, '評価', class:'col-form-label' %>
+      <%= f.hidden_field :star,id: :review_star, :value => @book.star %>
+
+  <script>
+    $('#star').empty();
+    $('#star').raty({
+      size     :36,
+      starOff  : '<%= asset_path('star-off.png') %>',
+      starOn   : '<%= asset_path('star-on.png') %>',
+      scoreName: 'book[star]',
+      half     : false,
+    });
+  </script>
+  </div>
+    </div>
+
+  <div class="row-10">
+    <div class="col-2 mx-auto mb-5">
+     <%= f.submit"新規登録", :class => "btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-2 bg-light text-center mt-5 mb-5">投稿一覧</h3></div>
+  <div class="row">
+    <% @books.each do |book| %>
+    <div class="col-3">
+      <div class="book mb-5">
+        <%= image_tag book.get_image(200, 200) %><br>
+        <%= link_to user_path(book.user_id) do %><%= book.user.name %><% end %><br>
+        <%= link_to book_path(book.id) do %><%= book.title %><% end %><br>
+        <div id="star-rate<%= book.id %>">
+          <script>
+            $('#star-rate<%= book.id %>').empty();
+            $('#star-rate<%= book.id %>').raty({
+              size    : 36,
+              starOff : '<%= asset_path('star-off.png') %>',
+              starOn  : '<%= asset_path('star-on.png') %>',
+              half    : false,
+              readOnly: true,
+              score   : <%= book.star %>,
+            });
+          </script>
+        </div>
+        <%= link_to "#{book.book_comments.count}コメント", book_path(book.id)%>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
