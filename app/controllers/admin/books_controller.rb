@@ -6,6 +6,7 @@ class Admin::BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user_book = @book.user
+    @books = @book.book_comments
   end
 
   def destroy
