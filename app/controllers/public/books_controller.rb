@@ -7,8 +7,14 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to user_path(@book.id)
+    tag_list = params[:book][:tag_ids].split('、')
+    if @book.save
+      @book.save_tags(tag_list)
+      flash[:success] = '投稿しました！'
+      redirect_to user_path(@book.id)
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -22,12 +28,19 @@ class Public::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @tag_list = @book.tags.pluck(:name).join(",")
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to book_path(@book.id)
+    tag_list = params[:book][:tag_ids].split(',')
+    if @book.update(book_params)
+      @book.save_tags(tag_list)
+      flash[:success] = '投稿を編集しました！！'
+      redirect_to book_path(@book.id)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -41,7 +54,7 @@ class Public::BooksController < ApplicationController
 
 
   def book_params
-    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active)
+    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active, :tag_ids)
   end
 
 end

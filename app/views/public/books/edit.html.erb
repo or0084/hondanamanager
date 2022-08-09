@@ -19,6 +19,12 @@
     <div class="col-4 mx-auto">ジャンル</div>
     <div class="col-4 mx-auto mb-4"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></div>
   </div>
+  <div class="row-10">
+    <div class="col-4 mx-auto">タグ</div>
+    <div class="col-4 mx-auto mb-4">
+      <%= f.text_field :tags, value: @tag_list, placeholder: "タグをつける。複数つけるには’、’で区切ってください。" %>
+      </div>
+  </div>
     <div class="row-10">
       <div class="col-4 mx-auto pr-5">レビュー</div>
       <div class="col-4 mx-auto pb-3", id="star-rate<%= @book.id %>">

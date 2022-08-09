@@ -30,6 +30,13 @@
       <div class="col-5"><%= @book.genre.name %></div>
     </div>
     <div class="row mb-2">
+      <div class="col-3">タグ</div>
+      <div class="col-5"><% @book.tags.each do |tag| %>
+      <%= tag.name %>
+      <% end %>
+      </div>
+    </div>
+    <div class="row mb-2">
       <div class="col-3">レビュー</div>
       <div class="col-5" id="star-rate<%= @book.id %>">
         <script>
