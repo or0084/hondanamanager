@@ -7,7 +7,7 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    tag_list = params[:book][:tag_ids].split('、')
+    tag_list = params[:book][:tag_ids].split(',')
     if @book.save
       @book.save_tags(tag_list)
       flash[:success] = '投稿しました！'
@@ -18,7 +18,7 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
   end
 
   def show
@@ -28,15 +28,16 @@ class Public::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    @tag_list = @book.tags.pluck(:name).join(",")
+    @tag_list = @book.tags.pluck(:name).join(',')
+
   end
 
   def update
     @book = Book.find(params[:id])
-    tag_list = params[:book][:tag_ids].split(',')
+    tag_list = params[:book][:tag_ids].try(:split, ',')
     if @book.update(book_params)
       @book.save_tags(tag_list)
-      flash[:success] = '投稿を編集しました！！'
+      flash[:success] = '投稿を編集しました'
       redirect_to book_path(@book.id)
     else
       render 'edit'
@@ -54,7 +55,7 @@ class Public::BooksController < ApplicationController
 
 
   def book_params
-    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active, :tag_ids)
+    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active)
   end
 
 end

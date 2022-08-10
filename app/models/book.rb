@@ -19,18 +19,18 @@ class Book < ApplicationRecord
   end
 
 
-  def save_tags(savebook_tags)
+  def save_tags(savetag_books)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    old_tags = current_tags - savebook_tags
-    new_tags = savebook_tags - current_tags
+    old_tags = current_tags - savetag_books
+    new_tags = savetag_books - current_tags
 
     old_tags.each do |old_name|
-      self.tags.delete Tag.find_by(name: old_name)
+      self.tags.delete Tag.find_by(name:old_name)
     end
 
     new_tags.each do |new_name|
-      book_tag = Tag.find_or_create_by(name: new_name)
-      self.tags << book_tag
+      tag_book = Tag.find_or_create_by(name:new_name)
+      self.tags << tag_book
     end
   end
 
