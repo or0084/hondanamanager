@@ -1,5 +1,5 @@
 <div class="container d-flex">
-  <div class="col-3">
+  <div class="col-3 mt-5">
     <%= form_with url: books_path, method: :get do %>
     <%= select_tag :tag_id,
     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -11,14 +11,20 @@
   </div>
   <div class="col-9">
   <div class="row">
-    <h3 class="col-2 bg-light text-center mt-5 mb-5">投稿一覧</h3></div>
+    <h3 class="col-3 bg-light text-center mt-5 mb-5">投稿一覧</h3></div>
   <div class="row">
     <% @books.each do |book| %>
-    <div class="col-3">
+    <div class="col-4 p-0">
       <div class="book mb-5">
+        <%= book.created_at.strftime('%Y/%m/%d') %><br>
         <%= image_tag book.get_image(200, 200) %><br>
         <%= link_to user_path(book.user_id) do %><%= book.user.name %><% end %><br>
         <%= link_to book_path(book.id) do %><%= book.title %><% end %><br>
+        <div class="tag text-secondary">
+        <% book.tags.each do |tag| %>
+        <%= tag.name %>
+        <% end %>
+        </div>
         <div id="star-rate<%= book.id %>">
           <script>
             $('#star-rate<%= book.id %>').empty();
