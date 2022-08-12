@@ -10,7 +10,7 @@ class Public::BooksController < ApplicationController
     tag_list = params[:book][:tag_ids].split(',')
     if @book.save
       @book.save_tags(tag_list)
-      flash[:success] = '投稿しました！'
+      flash[:notice] = '本棚に追加しました！'
       redirect_to user_path(@book.id)
     else
       render 'new'
@@ -44,7 +44,7 @@ class Public::BooksController < ApplicationController
     tag_list = params[:book][:tag_ids].try(:split, ',')
     if @book.update(book_params)
       @book.save_tags(tag_list)
-      flash[:success] = '投稿を編集しました'
+      flash[:notice] = '投稿の編集に成功しました！'
       redirect_to book_path(@book.id)
     else
       render 'edit'
@@ -53,8 +53,12 @@ class Public::BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
-    redirect_to user_path(@book.id)
+    if @book.destroy
+      flash[:notice] = '投稿を削除しました！'
+      redirect_to user_path(@book.id)
+    else
+      render 'show'
+    end
   end
 
 

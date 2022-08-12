@@ -12,8 +12,12 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    @user.update(user_params)
+    if @user.update(user_params)
+    flash[:notice] = 'ユーザーの編集に成功しました！'
     redirect_to mypage_path
+    else
+    render 'edit'
+    end
   end
 
   def unsubscribe
