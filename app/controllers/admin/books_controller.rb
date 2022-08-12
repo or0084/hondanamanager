@@ -1,6 +1,12 @@
 class Admin::BooksController < ApplicationController
   def index
-    @books = Book.page(params[:page])
+    @books = Book.all
+  end
+
+  def search
+    @books = Book.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
 
   def show
