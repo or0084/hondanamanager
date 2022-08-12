@@ -1,5 +1,12 @@
 <div class="container d-flex">
   <div class="col-3 mt-5">
+    <div class="row mb-5 search-form">キーワード検索
+      <%= form_with url: search_path, method: :get do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+      <% end %>
+    </div>
+    <div class="row tag">
     <%= form_with url: books_path, method: :get do %>
     <%= select_tag :tag_id,
     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
@@ -8,6 +15,7 @@
       onchange: 'submit(this.form);'
     }%>
     <% end %>
+    </div>
   </div>
   <div class="col-9">
   <div class="row">

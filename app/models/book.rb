@@ -10,6 +10,7 @@ class Book < ApplicationRecord
 
   has_one_attached :image
 
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/default-image.jpeg')
@@ -32,6 +33,11 @@ class Book < ApplicationRecord
       tag_book = Tag.find_or_create_by(name:new_name)
       self.tags << tag_book
     end
+  end
+
+
+  def self.search(keyword)
+    where(["title like?", "%#{keyword}%"])
   end
 
 end

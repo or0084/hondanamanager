@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :book_comments, only: [:create, :destroy]
     end
 
+    get 'search' => 'books#search'
     get 'users/mypage' => 'users#show', as: 'mypage'
     get 'users/mypage/edit' => 'users#edit', as: 'edit'
     patch 'users/mypage' => 'users#update', as: 'user'

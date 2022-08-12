@@ -22,6 +22,12 @@ class Public::BooksController < ApplicationController
     @books = params[:tag_id].present? ? Tag.find(params[:tag_id]).books : Book.all
   end
 
+  def search
+    @books = Book.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
   def show
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
