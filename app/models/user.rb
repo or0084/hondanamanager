@@ -11,10 +11,13 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
 
 
+  validates :name, presence: true
+  validates :email, presence: true
+
+
   def active_for_authentication?
     super && (self.is_active == false)
   end
-
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
@@ -30,5 +33,6 @@ class User < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
 
 end
