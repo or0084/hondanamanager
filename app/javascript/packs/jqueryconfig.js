@@ -1,9 +1,9 @@
-$(function(){
-  $('#form').validate({
-    rules: {
-      "user[name]": {
-        required: true,
-      },
-    },
-  })
-})
+// $(function(){
+//   $('#form').validate({
+//     rules: {
+//       "user[name]": {
+//         required: true,
+//       },
+//     },
+//   })
+// })

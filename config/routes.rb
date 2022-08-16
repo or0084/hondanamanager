@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
 
     resources :genres, only:[:index, :create, :edit, :update]
-
+    
     get 'search' => 'books#search'
   end
 

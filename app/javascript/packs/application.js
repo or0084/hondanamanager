@@ -16,7 +16,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
-require('jqueryconfig.js')
+// require('jqueryconfig.js')
 
 Rails.start()
 // Turbolinks.start()
