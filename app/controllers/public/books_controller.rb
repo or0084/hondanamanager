@@ -11,7 +11,7 @@ class Public::BooksController < ApplicationController
     if @book.save
       @book.save_tags(tag_list)
       flash[:notice] = '本棚に追加しました！'
-      redirect_to user_path(@book.id)
+      redirect_to user_path(@book.user.id)
     else
       render 'new'
     end

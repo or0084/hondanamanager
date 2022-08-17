@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     end
 
     get 'search' => 'books#search'
-    get 'users/mypage' => 'users#show', as: 'mypage'
-    get 'users/mypage/edit' => 'users#edit', as: 'edit'
-    patch 'users/mypage' => 'users#update', as: 'user'
+    get 'users/mypage/:id' => 'users#show', as: 'mypage'
+    get 'users/mypage/:id/edit' => 'users#edit', as: 'edit'
+    patch 'users/mypage/:id' => 'users#update', as: 'user'
     get '/users/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     patch '/users/withdraw' => 'users#withdraw', as: 'withdraw'
   end
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
 
     resources :genres, only:[:index, :create, :edit, :update]
-    
+
     get 'search' => 'books#search'
   end
 
