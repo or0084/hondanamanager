@@ -1,4 +1,6 @@
 class Admin::BooksController < ApplicationController
+  before_action :autheniticate_admin
+
   def index
     @books = Book.all
   end

@@ -1,4 +1,5 @@
 class Admin::BookCommentsController < ApplicationController
+  before_action :autheniticate_admin
 
   def destroy
     BookComment.find(params[:id]).destroy
