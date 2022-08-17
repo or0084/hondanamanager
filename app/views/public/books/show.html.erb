@@ -69,7 +69,7 @@
       <div class="col-3 mb-5">
     <%= image_tag book_comment.user.get_profile_image(100,100) %>
     <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
-    <% if book_comment.user == current_user %>
+    <% if book_comment.user_id == current_user.id %>
      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
     <% end %>
     </div>

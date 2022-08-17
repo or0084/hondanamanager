@@ -18,9 +18,9 @@ import '@fortawesome/fontawesome-free/js/all'
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
 
-// import "jquery.validate.js";
-// import "jquery.validate.min.js";
-// import "validate.js";
+// require("./jquery.validate.js")
+ require("./jquery.validate.min.js")
+import "./validate.js";
 
 Rails.start()
 // Turbolinks.start()

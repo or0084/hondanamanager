@@ -1,4 +1,5 @@
 class Public::BooksController < ApplicationController
+  before_action :autheniticate_user, only: [:create, :edit, :update]
 
   def new
     @book = Book.new
@@ -35,6 +36,9 @@ class Public::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user_id != current_user.id
+      redirect_to books_path
+    end
     @tag_list = @book.tags.pluck(:name).join(',')
 
   end
@@ -42,7 +46,8 @@ class Public::BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     tag_list = params[:book][:tag_ids].try(:split, ',')
-    if @book.update(book_params)
+   if  @book.user_id = current_user.id
+     @book.update(book_params)
       @book.save_tags(tag_list)
       flash[:notice] = '投稿の編集に成功しました！'
       redirect_to book_path(@book.id)
@@ -55,7 +60,7 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     if @book.destroy
       flash[:notice] = '投稿を削除しました！'
-      redirect_to user_path(@book.id)
+      redirect_to user_path(@book.user.id)
     else
       render 'show'
     end

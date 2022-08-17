@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :autheniticate_user, only: [:edit, :update, :withdraw]
 
   def show
     @user = User.find(params[:id])
@@ -9,6 +10,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
+
   end
 
   def update

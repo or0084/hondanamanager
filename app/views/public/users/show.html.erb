@@ -19,7 +19,9 @@
       <div class="col-3">処分済み</div>
       <div class="col-9"><%= @book_deleted.count %> 冊</div>
     </div>
+      <% if @user == current_user %>
       <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+      <% end %>
       </div>
 
 
@@ -28,7 +30,7 @@
     <div class="col-7 mt-5 mb-4 ml-4">
       <div class="row d-flex justify-content-between mb-3">
       <h2 class="col-3 ml-3">本棚</h2>
-      <div class="col-3"><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %></div>
+      <div class="col-3"><% if @user == current_user %><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %><% end %></div>
       </div>
   <table class="table w-100">
     <thead>
