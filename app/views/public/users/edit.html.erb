@@ -1,4 +1,14 @@
 <div class="container w-100">
+  <% if @user.errors.any? %>
+  <div id="error_explanation" class="col-12 border border-danger bg-light">
+    <h2 class="col-4 mx-auto text-danger"><%= pluralize(@user.errors.count, "エラー") %></h2>
+    <ul class="col-4 mx-auto">
+      <% @user.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="row-8">
     <h3 class="col-4 bg-ligth mt-4 mb-4 mx-auto">ユーザー編集</h3>
   </div>

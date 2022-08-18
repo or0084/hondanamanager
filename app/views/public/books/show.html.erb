@@ -1,4 +1,14 @@
 <div class="container d-flex justify-content-center mt-5">
+  <% if @book.errors.any? %>
+  <div id="error_explanation" class="col-12 border border-danger bg-light">
+    <h2 class="col-4 mx-auto text-danger"><%= pluralize(@book.errors.count, "エラー") %></h2>
+    <ul class="col-4 mx-auto">
+      <% @book.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="col-3">
     <%= image_tag @book.get_image(200,200) %>
     <div class="row">
@@ -63,6 +73,16 @@
   <div class="col-4 mx-auto">コメント一覧</h2></div>
 
 <div class="container d-flex justify-content-center mb-5">
+  <% if @book.errors.any? %>
+  <div id="error_explanation" class="col-12 border border-danger bg-light">
+    <h2 class="col-4 mx-auto text-danger"><%= pluralize(@book.errors.count, "エラー") %></h2>
+    <ul class="col-4 mx-auto">
+      <% @book.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="col-7">
     <% @book.book_comments.each do |book_comment| %>
     <div class="row">
@@ -71,7 +91,7 @@
     <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
     <% if book_comment.user_id == current_user.id %>
      <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
-    <% end %>
+     <% end %>
     </div>
     <div class="col-7 mr-5 p-2 bg-light comment">
     <h4><%= book_comment.user.name %></h4>

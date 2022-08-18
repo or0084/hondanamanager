@@ -47,13 +47,14 @@ class Public::BooksController < ApplicationController
     @book = Book.find(params[:id])
     tag_list = params[:book][:tag_ids].try(:split, ',')
    if  @book.user_id = current_user.id
-     @book.update(book_params)
+     if @book.update(book_params)
       @book.save_tags(tag_list)
       flash[:notice] = '投稿の編集に成功しました！'
       redirect_to book_path(@book.id)
-    else
+     else
       render 'edit'
-    end
+     end
+   end
   end
 
   def destroy
@@ -71,7 +72,7 @@ class Public::BooksController < ApplicationController
 
 
   def book_params
-    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active, tag_ids: [:name])
+    params.require(:book).permit(:title, :body, :genre_id, :image, :star, :is_active)
   end
 
 end

@@ -7,3 +7,10 @@ ja:
     name: ユーザー名
     email: メールアドレス
     password: パスワード
+    password_confirmation: 確認用パスワード
+    introduction: 自己紹介
+   book:
+    title: タイトル
+    genre: ジャンル
+    body: 感想
+    star: レビュー

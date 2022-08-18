@@ -9,12 +9,11 @@ class Book < ApplicationRecord
 
 
   has_one_attached :image
-  
-  
-  validates :title, presence: true
-  validates :body, presence: true
+
+
+  validates :title, presence: true,length: {maximum:50}
+  validates :body, presence: true,length: {maximum:200}
   validates :star, presence: true
-  validates :genre_id, presence: true
 
 
   def get_image(width, height)
