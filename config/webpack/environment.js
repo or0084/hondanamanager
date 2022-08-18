@@ -9,7 +9,6 @@ environment.plugins.prepend(
     jQuery: 'jquery/src/jquery',
     jquery: 'jquery/srcjquery',
     Popper: 'popper.js',
-    validate: 'validate.js'
   })
 )
 

@@ -8,17 +8,18 @@
   </div>
   <br>
 
-  <%= form_with(model: @user, url: user_registration_path, id: "form") do |f| %>
-  <!--% if @user.errors.any? %>-->
-  <!--<div id="error_explanation">-->
-  <!--  <h2>%= pluralize(@user.errors.count, "error") %></h2>-->
-  <!--  <ul>-->
-  <!--    % @user.errors.full_messages.each do |m| %>-->
-  <!--    <li>%= m %></li>-->
-  <!--    % end %>-->
-  <!--  </ul>-->
-  <!--</div>-->
-  <!--% end %>-->
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+
+  <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+    <ul>
+      <% @user.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
   <div class="form-group row">
     <label for="text" class="col-lg-3">ユーザー名</label>
