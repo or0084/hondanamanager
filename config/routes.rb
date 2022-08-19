@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :books, only:[:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :book_comments, only: [:create, :destroy]
     end
-
     get 'search' => 'books#search'
     get 'users/mypage/:id' => 'users#show', as: 'mypage'
     get 'users/mypage/:id/edit' => 'users#edit', as: 'edit'
@@ -35,11 +34,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only:[:index, :show, :edit, :update, :destroy]
-
     resources :books, only:[:index, :show, :destroy] do
       resources :book_comments, only: [:destroy]
     end
-
     resources :genres, only:[:index, :create, :edit, :update]
 
     get 'search' => 'books#search'
