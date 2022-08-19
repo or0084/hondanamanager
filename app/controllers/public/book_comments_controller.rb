@@ -6,8 +6,7 @@ class Public::BookCommentsController < ApplicationController
     comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = book.id
     comment.save
-     redirect_to book_path(book)
-
+    redirect_to book_path(book)
   end
 
   def destroy
@@ -22,4 +21,5 @@ class Public::BookCommentsController < ApplicationController
   def book_comment_params
     params.require(:book_comment).permit(:comment)
   end
+
 end

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :autheniticate_admin
-  
+
   def index
     @users = User.page(params[:page])
   end
@@ -10,7 +10,6 @@ class Admin::UsersController < ApplicationController
     @books = @user.books
     @book_shelf = @books.where(is_active: 'true')
     @book_deleted = @books.where(is_active: 'false')
-
   end
 
   def edit
@@ -23,10 +22,12 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_user_path(@user.id)
   end
 
+
   private
 
 
   def user_params
     params.require(:user).permit(:name, :email, :is_active, :image)
   end
+
 end

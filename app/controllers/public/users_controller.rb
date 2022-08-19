@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :autheniticate_user, only: [:edit, :update, :withdraw]
+  before_action :autheniticate_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -10,16 +10,15 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
-
   end
 
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-    flash[:notice] = 'ユーザーの編集に成功しました！'
-    redirect_to mypage_path
+     flash[:notice] = 'ユーザーの編集に成功しました！'
+     redirect_to mypage_path
     else
-    render 'edit'
+     render 'edit'
     end
   end
 

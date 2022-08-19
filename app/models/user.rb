@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
@@ -20,12 +21,14 @@ class User < ApplicationRecord
     super && (self.is_active == false)
   end
 
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
      user.password = SecureRandom.urlsafe_base64
      user.name = 'ゲスト'
     end
   end
+
 
   def get_profile_image(width, height)
     unless image.attached?
@@ -34,6 +37,5 @@ class User < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-
 
 end

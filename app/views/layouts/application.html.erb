@@ -8,7 +8,6 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
@@ -39,7 +38,7 @@
                 <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-3' do %>ログアウト<% end %>
               </li>
              <% elsif user_signed_in? %>
-             <li class="nav-item">
+              <li class="nav-item">
                 <%= link_to "/", class: 'nav-link text-dark mr-3' do %>Top<% end %>
               </li>
               <li class="nav-item">
@@ -51,9 +50,7 @@
               <li class="nav-item">
                 <%= link_to  destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-3' do %>ログアウト<% end %>
               </li>
-
-              <% else %>
-
+             <% else %>
               <li class="nav-item">
                 <%= link_to "/", class: 'nav-link text-dark mr-3' do %>Top<% end %>
               </li>
@@ -67,7 +64,6 @@
                 <%= link_to user_session_path, class: 'nav-link text-dark mr-3' do %>ログイン<% end %>
               </li>
              <% end %>
-
             </ul>
           </div>
         </div>
@@ -78,8 +74,5 @@
     <main>
     <%= yield %>
     </main>
-
-
-    <!--<footer class="footer fixed-bottom">hondanamanager</footer>-->
   </body>
 </html>

@@ -1,4 +1,5 @@
 <div class="container d-flex justify-content-center mt-5">
+
   <% if @book.errors.any? %>
   <div id="error_explanation" class="col-12 border border-danger bg-light">
     <h2 class="col-4 mx-auto text-danger"><%= pluralize(@book.errors.count, "エラー") %></h2>
@@ -9,18 +10,18 @@
     </ul>
   </div>
   <% end %>
+
   <div class="col-3">
     <%= image_tag @book.get_image(200,200) %>
     <div class="row">
       <div class="col-12 mt-3">
-      <% if @book.user == current_user %>
-      <%= link_to "編集する", edit_book_path(@book.id), class: "col-6 mr-4 btn-sm btn-success" %>
-      <%= link_to "削除する", book_path(@book.id), method: :delete, class: " ml-4 col-6 btn-sm btn-danger" %>
-      <% end %>
+       <% if @book.user == current_user %>
+       <%= link_to "編集する", edit_book_path(@book.id), class: "col-6 mr-4 btn-sm btn-success" %>
+       <%= link_to "削除する", book_path(@book.id), method: :delete, class: " ml-4 col-6 btn-sm btn-danger" %>
+       <% end %>
       </div>
     </div>
   </div>
-
   <div class="col-6">
     <h3 class="row mb-4">投稿詳細</h3>
     <div class="row mb-2">
@@ -42,8 +43,8 @@
     <div class="row mb-2">
       <div class="col-3">タグ</div>
       <div class="col-5"><% @book.tags.each do |tag| %>
-      <%= tag.name %>
-      <% end %>
+       <%= tag.name %>
+       <% end %>
       </div>
     </div>
     <div class="row mb-2">
@@ -70,7 +71,7 @@
 </div>
 
 <h2 class="row bg-info mt-5 mb-5 ml-1 h-100 w-100 text-center">
-  <div class="col-4 mx-auto">コメント一覧</h2></div>
+  <div class="col-4 mx-auto">コメント一覧</div></h2>
 
 <div class="container d-flex justify-content-center mb-5">
   <% if @book.errors.any? %>
@@ -87,23 +88,23 @@
     <% @book.book_comments.each do |book_comment| %>
     <div class="row">
       <div class="col-3 mb-5">
-    <%= image_tag book_comment.user.get_profile_image(100,100) %>
-    <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
-    <% if book_comment.user_id == current_user.id %>
-     <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
-     <% end %>
-    </div>
-    <div class="col-7 mr-5 p-2 bg-light comment">
-    <h4><%= book_comment.user.name %></h4>
-    <P><%= book_comment.comment %></P>
-    </div>
+       <%= image_tag book_comment.user.get_profile_image(100,100) %>
+       <%= book_comment.created_at.strftime('%Y/%m/%d') %><br>
+       <% if book_comment.user_id == current_user.id %>
+       <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %>
+       <% end %>
+      </div>
+      <div class="col-7 mr-5 p-2 bg-light comment">
+       <h4><%= book_comment.user.name %></h4>
+       <P><%= book_comment.comment %></P>
+      </div>
     </div>
     <% end %>
-    </div>
-    <div class="col-4">
-      <%= form_with model: [@book, @book_comment] do |f| %>
-      <%= f.text_area :comment, :size => "40x5", placeholder: "コメントをここに" %><br>
-      <%= f.submit "送信する" %>
-      <% end %>
-    </div>
+  </div>
+  <div class="col-4">
+    <%= form_with model: [@book, @book_comment] do |f| %>
+    <%= f.text_area :comment, :size => "40x5", placeholder: "コメントをここに" %><br>
+    <%= f.submit "送信する" %>
+    <% end %>
+  </div>
 </div>

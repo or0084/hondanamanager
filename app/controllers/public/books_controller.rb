@@ -40,13 +40,12 @@ class Public::BooksController < ApplicationController
       redirect_to books_path
     end
     @tag_list = @book.tags.pluck(:name).join(',')
-
   end
 
   def update
     @book = Book.find(params[:id])
     tag_list = params[:book][:tag_ids].try(:split, ',')
-   if  @book.user_id = current_user.id
+   if @book.user_id = current_user.id
      if @book.update(book_params)
       @book.save_tags(tag_list)
       flash[:notice] = '投稿の編集に成功しました！'

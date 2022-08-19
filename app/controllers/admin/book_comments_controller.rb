@@ -5,4 +5,5 @@ class Admin::BookCommentsController < ApplicationController
     BookComment.find(params[:id]).destroy
     redirect_to admin_book_path(params[:book_id])
   end
+
 end

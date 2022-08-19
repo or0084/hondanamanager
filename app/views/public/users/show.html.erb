@@ -1,39 +1,36 @@
 <div class="container-fluid d-flex w-100">
 
-    <div class="col-4 ml-5 mt-4">
-      <h4 class="col-7 bg-light mt-5 mb-5 ml-5 text-center"><%= @user.name%>さんの本棚</h4>
-    <div class="row">
-      <div class="col-5 mx-auto mb-5">
+  <div class="col-4 ml-5 mt-4">
+   <h4 class="col-7 bg-light mt-5 mb-5 ml-5 text-center"><%= @user.name%>さんの本棚</h4>
+   <div class="row">
+     <div class="col-5 mx-auto mb-5">
       <%= image_tag @user.get_profile_image(100,100) %>
-      </div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-3">自己紹介</div>
-      <div class="col-9"><%= @user.introduction %></div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-3">本棚</div>
-      <div class="col-9"><%= @book_shelf.count %> 冊</div>
-    </div>
-    <div class="row mb-4">
-      <div class="col-3">処分済み</div>
-      <div class="col-9"><%= @book_deleted.count %> 冊</div>
-    </div>
-      <% if @user == current_user %>
-      <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
-      <% end %>
-      </div>
+     </div>
+   </div>
+   <div class="row mb-4">
+     <div class="col-3">自己紹介</div>
+     <div class="col-9"><%= @user.introduction %></div>
+   </div>
+   <div class="row mb-4">
+     <div class="col-3">本棚</div>
+     <div class="col-9"><%= @book_shelf.count %> 冊</div>
+   </div>
+   <div class="row mb-4">
+     <div class="col-3">処分済み</div>
+     <div class="col-9"><%= @book_deleted.count %> 冊</div>
+   </div>
+     <% if @user == current_user %>
+     <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+     <% end %>
+  </div>
 
-
-
-
-    <div class="col-7 mt-5 mb-4 ml-4">
-      <div class="row d-flex justify-content-between mb-3">
-      <h2 class="col-3 ml-3">本棚</h2>
-      <div class="col-3"><% if @user == current_user %><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %><% end %></div>
-      </div>
-  <table class="table w-100">
-    <thead>
+  <div class="col-7 mt-5 mb-4 ml-4">
+    <div class="row d-flex justify-content-between mb-3">
+     <h2 class="col-3 ml-3">本棚</h2>
+     <div class="col-3"><% if @user == current_user %><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %><% end %></div>
+    </div>
+    <table class="table w-100">
+     <thead>
       <tr class="table-secondary text-algin-left">
         <th style="width: 20%">タイトル</th>
         <th style="width: 30%">感想</th>
@@ -41,36 +38,33 @@
         <th style="width: 20%">ジャンル</th>
         <th style="width: 20%">投稿日</th>
       </tr>
-    </thead>
-
-    <tbody>
+     </thead>
+     <tbody>
       <% @book_shelf.each do |book| %>
       <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
       <td>
         <div id="star-rate<%= book.id %>"></td>
-        <script>
-          $('#star-rate<%= book.id %>').empty();
-          $('#star-rate<%= book.id %>').raty({
-            size    : 36,
-            starOff : '<%= asset_path('star-off.png') %>',
-            starOn  : '<%= asset_path('star-on.png') %>',
-            half    : false,
-            readOnly: true,
-            score   : <%= book.star %>,
-          });
-        </script>
+         <script>
+           $('#star-rate<%= book.id %>').empty();
+           $('#star-rate<%= book.id %>').raty({
+             size    : 36,
+             starOff : '<%= asset_path('star-off.png') %>',
+             starOn  : '<%= asset_path('star-on.png') %>',
+             half    : false,
+             readOnly: true,
+             score   : <%= book.star %>,
+           });
+         </script>
         </div>
-
       <td><%= book.genre.name %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
-    </tbody>
-      <% end %>
-  </table>
-
-  <h2 class="col-3 mt-5 mb-4">処分済み</h2>
-  <table class="table w-100">
-    <thead>
+     </tbody>
+     <% end %>
+    </table>
+    <h2 class="col-3 mt-5 mb-4">処分済み</h2>
+    <table class="table w-100">
+     <thead>
       <tr class="table-secondary text-algin-left">
         <th style="width: 20%">タイトル</th>
         <th style="width: 30%">感想</th>
@@ -78,32 +72,29 @@
         <th style="width: 20%">ジャンル</th>
         <th style="width: 20%">投稿日</th>
       </tr>
-    </thead>
-
-    <tbody>
+     </thead>
+     <tbody>
       <% @book_deleted.each do |book| %>
       <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
       <td>
         <div id="star-rate<%= book.id %>"></td>
-        <script>
-          $('#star-rate<%= book.id %>').empty();
-          $('#star-rate<%= book.id %>').raty({
-            size    : 36,
-            starOff : '<%= asset_path('star-off.png') %>',
-            starOn  : '<%= asset_path('star-on.png') %>',
-            half    : false,
-            readOnly: true,
-            score   : <%= book.star %>,
-          });
-        </script>
+         <script>
+           $('#star-rate<%= book.id %>').empty();
+           $('#star-rate<%= book.id %>').raty({
+             size    : 36,
+             starOff : '<%= asset_path('star-off.png') %>',
+             starOn  : '<%= asset_path('star-on.png') %>',
+             half    : false,
+             readOnly: true,
+             score   : <%= book.star %>,
+           });
+         </script>
         </div>
-
       <td><%= book.genre.name %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
-    </tbody>
+     </tbody>
       <% end %>
-  </table>
-    </div>
-
+    </table>
+  </div>
 </div>

@@ -7,20 +7,21 @@
       <% end %>
     </div>
     <div class="row tag">
-    <%= form_with url: books_path, method: :get do %>
-    <%= select_tag :tag_id,
-    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-    {
-      prompt: 'タグで絞り込み',
-      onchange: 'submit(this.form);'
-    }%>
-    <% end %>
+     <%= form_with url: books_path, method: :get do %>
+     <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+      {
+       prompt: 'タグで絞り込み',
+       onchange: 'submit(this.form);'
+      }%>
+     <% end %>
     </div>
   </div>
+
   <div class="col-9">
-  <div class="row">
-    <h3 class="col-3 bg-light text-center mt-5 mb-5">投稿一覧</h3></div>
-  <div class="row">
+   <div class="row">
+    <h3 class="col-3 bg-light text-center mt-5 mb-5">投稿一覧</h3>
+   </div>
+   <div class="row">
     <% @books.each do |book| %>
     <div class="col-4 p-0">
       <div class="book mb-5">
@@ -29,9 +30,9 @@
         <%= link_to user_path(book.user_id) do %><%= book.user.name %><% end %><br>
         <%= link_to book_path(book.id) do %><%= book.title %><% end %><br>
         <div class="tag text-secondary">
-        <% book.tags.each do |tag| %>
-        <%= tag.name %>
-        <% end %>
+         <% book.tags.each do |tag| %>
+         <%= tag.name %>
+         <% end %>
         </div>
         <div id="star-rate<%= book.id %>">
           <script>
@@ -50,6 +51,6 @@
       </div>
     </div>
     <% end %>
+   </div>
   </div>
-</div>
 </div>
