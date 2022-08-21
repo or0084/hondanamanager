@@ -1,0 +1,40 @@
+<div class="container w-100">
+
+  <% if @user.errors.any? %>
+  <div id="error_explanation" class="col-12 border border-danger bg-light">
+    <h2 class="col-4 mx-auto text-danger"><%= pluralize(@user.errors.count, "エラー") %></h2>
+    <ul class="col-4 mx-auto">
+      <% @user.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="row-8">
+    <h3 class="col-4 bg-ligth mt-4 mb-4 mx-auto">ユーザー編集</h3>
+  </div>
+  <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+  <div class="row-8">
+    <div class="col-3 mx-auto">画像</div>
+    <div class="col-4 mx-auto mb-3"><%= f.file_field :image, accept: "image/*" %></div>
+  </div>
+  <div class="row-8">
+    <div class="col-3 mx-auto">ユーザー名</div>
+    <div class="col-4 mb-3 mx-auto"><%= f.text_field :name, :size => "51" %></div>
+  </div>
+  <div class="row-8">
+    <div class="col-3 mx-auto">メールアドレス</div>
+    <div class="col-4 mb-3 mx-auto"><%= f.text_field :email, :size => "51" %></div>
+  </div>
+  <div class="row-8">
+    <div class="col-3 mx-auto">自己紹介</div>
+    <div class="col-4 mb-3 mx-auto"><%= f.text_area :introduction, :size => "50x10" %></div>
+  </div>
+  <div class="row-10 d-flex">
+    <div class="col-5"></div>
+    <div class="col-2"><%= f.submit "変更を保存", :class => "btn btn-success mb-5 mt-3"%></div>
+    <div class="col-5"><%= link_to "退会する", unsubscribe_path, :class => "btn btn-danger mb-5 mt-3"%></div>
+  </div>
+  <% end %>
+</div>

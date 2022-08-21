@@ -1,0 +1,2 @@
+module Public::BookCommentsHelper
+end
