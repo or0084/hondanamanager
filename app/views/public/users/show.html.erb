@@ -1,10 +1,10 @@
 <div class="container-fluid d-flex w-100">
 
-  <div class="col-4 ml-5 mt-4">
-   <h4 class="col-7 bg-light mt-5 mb-5 ml-5 text-center"><%= @user.name%>さんの本棚</h4>
+  <div class="col-4 ml-5 mt-4 border">
+   <h4 class="col-7 bg-light mt-5 mb-5 mx-auto text-center"><%= @user.name%>さんの本棚</h4>
    <div class="row">
      <div class="col-5 mx-auto mb-5">
-      <%= image_tag @user.get_profile_image(100,100) %>
+      <%= image_tag @user.get_profile_image(200,200) %>
      </div>
    </div>
    <div class="row mb-4">
@@ -19,9 +19,11 @@
      <div class="col-3">処分済み</div>
      <div class="col-9"><%= @book_deleted.count %> 冊</div>
    </div>
+   <div class="row">
      <% if @user == current_user %>
-     <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success ml-5 mt-4" %>
+     <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success col-3 mx-auto ml-5 mt-4 mb-5" %>
      <% end %>
+   </div>
   </div>
 
   <div class="col-7 mt-5 mb-4 ml-4">
