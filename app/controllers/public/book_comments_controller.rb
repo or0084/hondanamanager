@@ -8,6 +8,7 @@ class Public::BookCommentsController < ApplicationController
     if comment.save
      redirect_to book_path(book)
     else
+     @error = comment
      @book = Book.find(params[:book_id])
      @book_comment = BookComment.new
      render "public/books/show"

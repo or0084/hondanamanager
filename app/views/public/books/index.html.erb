@@ -26,7 +26,7 @@
     <div class="col-4 p-0">
       <div class="book mb-5">
         <%= book.created_at.strftime('%Y/%m/%d') %><br>
-        <%= image_tag book.get_image(200, 200) %><br>
+        <%= image_tag book.get_image(150, 200) %><br>
         <%= link_to user_path(book.user_id) do %><%= book.user.name %><% end %><br>
         <%= link_to book_path(book.id) do %><%= book.title %><% end %><br>
         <div class="tag text-secondary">
