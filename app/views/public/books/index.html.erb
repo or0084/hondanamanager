@@ -24,7 +24,7 @@
    <div class="row">
     <% @books.each do |book| %>
     <div class="col-4 p-0">
-      <div class="book mb-5">
+      <div class="book mb-5 pr-5">
         <%= book.created_at.strftime('%Y/%m/%d') %><br>
         <%= image_tag book.get_image(150, 200) %><br>
         <%= link_to user_path(book.user_id) do %><%= book.user.name %><% end %><br>

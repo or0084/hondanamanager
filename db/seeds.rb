@@ -8,15 +8,15 @@
 
 
 
-# Admin.create!(
-#   email: "0084@email",
-#   password: "111111"
-#   )
+Admin.create!(
+  email: "0084@email",
+  password: "password"
+  )
 
-  User.create!(
-    name: "山田花",
-    email: "a@email",
-    password: "111111",
-    is_active: "false"
-    
-    )
+  # User.create!(
+  #   name: "山田花",
+  #   email: "a@email",
+  #   password: "111111",
+  #   is_active: "false"
+
+  #   )
