@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: {minimum:2, maximum:20 }
   validates :email, presence: true
-  validates :introduction ,length: {maximum:100}
+  validates :introduction ,length: {maximum:200}
 
 
   def active_for_authentication?
@@ -35,7 +35,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/default-image.jpeg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 
 end

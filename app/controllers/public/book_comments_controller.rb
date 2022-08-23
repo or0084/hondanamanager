@@ -5,8 +5,14 @@ class Public::BookCommentsController < ApplicationController
     book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = book.id
-    comment.save
-    redirect_to book_path(book)
+    if comment.save
+     redirect_to book_path(book)
+    else
+     @error = comment
+     @book = Book.find(params[:book_id])
+     @book_comment = BookComment.new
+     render "public/books/show"
+    end
   end
 
   def destroy

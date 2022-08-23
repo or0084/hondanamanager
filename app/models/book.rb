@@ -11,7 +11,7 @@ class Book < ApplicationRecord
   has_one_attached :image
 
 
-  validates :title, presence: true,length: {maximum:50}
+  validates :title, presence: true,length: {maximum:25}
   validates :body, presence: true,length: {maximum:200}
   validates :star, presence: true
 
@@ -21,7 +21,7 @@ class Book < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/default-image.jpeg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image.variant(resize_to_limit: [width, height]).processed
+    image.variant(resize_to_fill: [width, height]).processed
   end
 
 
