@@ -39,7 +39,7 @@ class Public::BooksController < ApplicationController
     if @book.user_id != current_user.id
       redirect_to books_path
     end
-    @tag_list = @book.tags.pluck(:name).join(',')
+    @tag_list = @book.tags.pluck(:name).join('＃')
   end
 
   def update

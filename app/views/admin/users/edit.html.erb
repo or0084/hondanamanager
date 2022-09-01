@@ -22,9 +22,9 @@
             <th>ステータス</th>
             <td>
               <%= f.radio_button :is_active, "false" %>
-              <%= f.label :is_active, "有効", :class => "col-4"  %>
+              <%= f.label :is_active, "有効", value: :false, :class => "col-4"  %>
               <%= f.radio_button :is_active, "true" %>
-              <%= f.label :is_active, "退会", :class => "col-4" %>
+              <%= f.label :is_active, "退会", value: :true, :class => "col-4" %>
             </td>
           </tr>
         </thead>

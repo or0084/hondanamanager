@@ -43,6 +43,7 @@
      </thead>
      <tbody>
       <% @book_shelf.each do |book| %>
+      <tr>
       <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
       <td>
@@ -61,6 +62,7 @@
         </div>
       <td><%= book.genre.name %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
      </tbody>
      <% end %>
     </table>
@@ -77,6 +79,7 @@
      </thead>
      <tbody>
       <% @book_deleted.each do |book| %>
+      <tr>
       <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
       <td><%= book.body %></td>
       <td>
@@ -95,6 +98,7 @@
         </div>
       <td><%= book.genre.name %></td>
       <td><%= book.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
      </tbody>
       <% end %>
     </table>

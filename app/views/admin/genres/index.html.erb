@@ -22,8 +22,10 @@
 
     <tbody>
       <% @genres.each do |genre| %>
+      <tr>
       <td style="width:60%"><%= genre.name %></td>
       <td><%= link_to "編集する", edit_admin_genre_path(genre.id), :class => "btn btn-success" %></td>
+      </tr>
   </tbody>
     <% end %>
   </table>
