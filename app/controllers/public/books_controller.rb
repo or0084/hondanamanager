@@ -8,7 +8,7 @@ class Public::BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    tag_list = params[:book][:tag_ids].split('＃')
+    tag_list = params[:book][:tag_ids].split(/[#|＃]/)
     if @book.save
       @book.save_tags(tag_list)
       flash[:notice] = '本棚に追加しました！'
@@ -44,7 +44,7 @@ class Public::BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    tag_list = params[:book][:tag_ids].try(:split, '＃')
+    tag_list = params[:book][:tag_ids].split(/[#|＃]/)
    if @book.user_id = current_user.id
      if @book.update(book_params)
       @book.save_tags(tag_list)
