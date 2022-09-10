@@ -20,16 +20,18 @@
   </div>
   <br>
   <div class="form-group row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-2"></div>
-    <%= f.submit "ログイン", :class => "btn btn-primary col-lg-2 mb-3" %>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2"></div>
+    <%= f.submit "ログイン", :class => "btn btn-primary col-lg-2 mb-5 mt-3" %>
   </div>
   <% end %>
 
   <div class="row">
-   <h3 class="bg-light">ユーザー登録がお済みでない方</h3>
+   <div class="col-2"></div>
+   <h3 class="col-sm-5 text-center bg-light ml-5 mb-3">ユーザー登録がお済みでない方</h3>
   </div>
-  <div class="col-5 mb-5">
+  <div class="row ml-5 mb-4">
+   <div class="col-sm-3"></div>
    <%= link_to new_user_registration_path do %>こちら<% end %>から新規登録を行なってください。
   </div>
 </div>

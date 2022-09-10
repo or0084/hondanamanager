@@ -24,7 +24,7 @@
 .rogo {
   width: 100px;
   height: 100px;
-  background: image-url("rogo.png");
+  background: url("rogo.png");
   background-size: 100px;
   position: center;
 }
@@ -50,7 +50,7 @@ main {
   width: 800px;
   height: 400px;
   margin: 0 auto;
-  background-image: image-url("top.jpg");
+  background-image: url("top.jpg");
   background-size:cover;
   background-position: center top;
   position: relative;
@@ -77,4 +77,34 @@ main {
 
 .field_with_errors {
   display: contents;
+}
+
+@media screen and (max-widht: 768px){
+  .top {
+    width: 100%;
+  }
+
+  .top-text {
+    width: 100%;
+  }
+
+  .container{
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+  .top {
+    width: 100%;
+  }
+
+  .top-text {
+    width: 100%;
+  }
+
+  .container{
+    width: 100%;
+  }
+
 }
