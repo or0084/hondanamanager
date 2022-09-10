@@ -1,35 +1,35 @@
-<div class="container-fluid d-flex w-100">
+<div class="container-fluid d-lg-flex w-100">
 
-  <div class="col-4 ml-5 mt-4 border mb-5">
-   <h4 class="col-7 bg-light mt-5 mb-5 mx-auto text-center"><%= @user.name%>さんの本棚</h4>
+  <div class="col-lg-4 col-sm-10 col-10 ml-5 mt-4 border mb-5">
+   <h4 class="col-lg-7 col-sm-10 bg-light mt-5 mb-5 mx-auto text-center"><%= @user.name%>さんの本棚</h4>
    <div class="row">
-     <div class="col-5 mx-auto mb-5">
+     <div class="col-lg-5 col-sm-10 mx-auto mb-5">
       <%= image_tag @user.get_profile_image(200,200) %>
      </div>
    </div>
    <div class="row mb-4">
-     <div class="col-3">自己紹介</div>
-     <div class="col-9"><%= @user.introduction %></div>
+     <div class="col-lg-3 col-sm-3">自己紹介</div>
+     <div class="col-lg-9 col-sm-9"><%= @user.introduction %></div>
    </div>
    <div class="row mb-4">
-     <div class="col-3">本棚</div>
-     <div class="col-9"><%= @book_shelf.count %> 冊</div>
+     <div class="col-lg-3 col-sm-3">本棚</div>
+     <div class="col-lg-9 col-sm-3"><%= @book_shelf.count %> 冊</div>
    </div>
    <div class="row mb-4">
-     <div class="col-3">処分済み</div>
-     <div class="col-9"><%= @book_deleted.count %> 冊</div>
+     <div class="col-lg-3 col-sm-3">処分済み</div>
+     <div class="col-lg-9 col-sm-3"><%= @book_deleted.count %> 冊</div>
    </div>
    <div class="row">
      <% if @user == current_user %>
-     <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success col-3 mx-auto ml-5 mt-4 mb-5" %>
+     <%= link_to "編集する", edit_path(@user.id), :class => "btn btn-success col-lg-3 col-sm-4 mx-auto ml-5 mt-4 mb-5" %>
      <% end %>
    </div>
   </div>
 
-  <div class="col-7 mt-5 mb-4 ml-4">
+  <div class="col-lg-7 col-sm-10 col-12 mt-5 mb-4 ml-4">
     <div class="row d-flex justify-content-between mb-3">
-     <h2 class="col-3 ml-3">本棚</h2>
-     <div class="col-3"><% if @user == current_user %><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %><% end %></div>
+     <h2 class="col-lg-3 col-sm-5 ml-3">本棚</h2>
+     <div class="col-lg-3 col-sm-5"><% if @user == current_user %><%= link_to "本棚に追加",new_book_path, :class => "btn btn-primary" %><% end %></div>
     </div>
     <table class="table w-100">
      <thead>
@@ -66,7 +66,7 @@
      </tbody>
      <% end %>
     </table>
-    <h2 class="col-3 mt-5 mb-4">処分済み</h2>
+    <h2 class="col-lg-3 col-sm-5 mt-5 mb-4">処分済み</h2>
     <table class="table w-100">
      <thead>
       <tr class="table-secondary text-algin-left">
