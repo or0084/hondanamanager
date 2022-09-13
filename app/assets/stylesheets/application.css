@@ -24,7 +24,7 @@
 .rogo {
   width: 100px;
   height: 100px;
-  background: url("rogo.png");
+  background: image-url("rogo.png");
   background-size: 100px;
   position: center;
 }
@@ -50,7 +50,7 @@ main {
   width: 800px;
   height: 400px;
   margin: 0 auto;
-  background-image: url("top.jpg");
+  background-image: image-url("top.jpg");
   background-size:cover;
   background-position: center top;
   position: relative;
