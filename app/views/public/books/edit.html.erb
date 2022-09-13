@@ -57,9 +57,9 @@
     <div class="col-4 mx-auto">ステータス</div>
     <div class="col-4 mx-auto mb-4">
      <%= f.radio_button :is_active, "true" %>
-     <%= f.label :is_active, "本棚", :class => "col-3 pl-1" %>
+     <%= f.label :is_active, "本棚", value: :true, :class => "col-3 pl-1" %>
      <%= f.radio_button :is_active, "false" %>
-     <%= f.label :is_active, "処分済み", :class => "col-4 pl-1"  %>
+     <%= f.label :is_active, "処分済み", value: :false, :class => "col-4 pl-1"  %>
     </div>
   </div>
 

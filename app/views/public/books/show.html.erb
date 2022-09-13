@@ -11,11 +11,11 @@
  <% end %>
 </div>
 
-<div class="container d-flex justify-content-center mt-5">
-  <div class="col-3">
+<div class="container d-lg-flex justify-content-center mt-5">
+  <div class="col-lg-3 col-sm-10 col-10">
     <%= image_tag @book.get_image(150,200) %>
     <div class="row">
-      <div class="col-12 mt-3">
+      <div class="col-12 mt-3 mb-5">
        <% if @book.user == current_user %>
        <%= link_to "編集する", edit_book_path(@book.id), class: "col-6 mr-4 btn-sm btn-success" %>
        <%= link_to "削除する", book_path(@book.id), method: :delete, class: " ml-4 col-6 btn-sm btn-danger" %>
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-lg-6 col-sm-12 col-12">
     <h3 class="row mb-4">投稿詳細</h3>
     <div class="row mb-2">
       <div class="col-3">投稿日</div>
@@ -72,10 +72,10 @@
 </div>
 
 <h2 class="row bg-info mt-5 mb-5 ml-1 h-100 w-100 text-center">
-  <div class="col-4 mx-auto">コメント一覧</div></h2>
+  <div class="col-lg-4 col-sm-10 mx-auto">コメント一覧</div></h2>
 
-<div class="container d-flex justify-content-center mb-5">
-  <div class="col-7">
+<div class="container d-lg-flex justify-content-center mb-5">
+  <div class="col-lg-7 col-sm-12">
     <% @book.book_comments.each do |book_comment| %>
     <div class="row">
       <div class="col-3 mb-5">
@@ -87,14 +87,14 @@
        <% end %>
        <% end %>
       </div>
-      <div class="col-7 mr-5 p-2 bg-light comment">
+      <div class="col-lg-7 col-sm-10 mr-5 mb-4 p-2 bg-light comment">
        <h4><%= book_comment.user.name %></h4>
        <P><%= book_comment.comment %></P>
       </div>
     </div>
     <% end %>
   </div>
-  <div class="col-4">
+  <div class="col-lg-4 col-sm-10">
     <%= form_with model: [@book, @book_comment] do |f| %>
     <%= f.text_area :comment, :size => "40x5", placeholder: "コメントをここに" %><br>
     <%= f.submit "送信する" %>

@@ -78,3 +78,33 @@ main {
 .field_with_errors {
   display: contents;
 }
+
+@media screen and (max-widht: 768px){
+  .top {
+    width: 100%;
+  }
+
+  .top-text {
+    width: 100%;
+  }
+
+  .container{
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+  .top {
+    width: 100%;
+  }
+
+  .top-text {
+    width: 100%;
+  }
+
+  .container{
+    width: 100%;
+  }
+
+}

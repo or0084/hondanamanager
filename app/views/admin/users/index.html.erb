@@ -18,11 +18,13 @@
 
     <tbody>
       <% @users.each do |user| %>
+      <tr>
       <td><%= user.id %></td>
       <td><%= link_to admin_user_path(user.id) do %><%= user.name %><% end %></td>
       <td><%= user.email %></td>
 
       <td><%= user.is_active ? '退会' : '有効' %></td>
+      </tr>
     </tbody>
       <% end %>
   </table>

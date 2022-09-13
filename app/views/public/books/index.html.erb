@@ -1,8 +1,8 @@
-<div class="container d-flex">
-  <div class="col-3 mt-5">
+<div class="container d-lg-flex book-index">
+  <div class="col-md-3 col-sm-5 mt-5">
     <div class="row mb-5 search-form">キーワード検索
       <%= form_with url: search_path, method: :get do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.text_field :keyword, value: @keyword, class: "col-md-8" %>
       <%= f.submit "検索" %>
       <% end %>
     </div>
@@ -17,13 +17,13 @@
     </div>
   </div>
 
-  <div class="col-9">
+  <div class="col-md-9 col-sm-5">
    <div class="row">
-    <h3 class="col-3 bg-light text-center mt-5 mb-5">投稿一覧</h3>
+    <h3 class="col-sm-3 col-md-4 bg-light text-center mt-5 mb-5">投稿一覧</h3>
    </div>
    <div class="row">
     <% @books.each do |book| %>
-    <div class="col-4 p-0">
+    <div class="col-sm-4 p-0">
       <div class="book mb-5 pr-5">
         <%= book.created_at.strftime('%Y/%m/%d') %><br>
         <%= image_tag book.get_image(150, 200) %><br>
