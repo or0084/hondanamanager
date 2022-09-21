@@ -15,18 +15,11 @@
  */
 
 
-/**{*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  box-sizing: border-box;*/
-/*}*/
-
 .rogo {
   width: 100px;
   height: 100px;
   background: url("rogo.png");
   background-size: 100px;
-  /*position: center;*/
 }
 
 main {
